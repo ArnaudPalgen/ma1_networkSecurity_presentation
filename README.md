@@ -23,3 +23,6 @@ Sites montrant le principe de base la signature numérique :
 
 Présentation technique d'adobe Sign :
   + https://acrobat.adobe.com/content/dam/doc-cloud/fr/pdfs/adobe-sign-technical-overview-fr.pdf
+
+FAQ (Foires Aux Questions) sur Adobe sign
+ + https://helpx.adobe.com/be_fr/sign/faq.html
