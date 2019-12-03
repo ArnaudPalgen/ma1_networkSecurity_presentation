@@ -23,8 +23,9 @@ Sites montrant le principe de base la signature numérique :
   + https://fr.wikipedia.org/wiki/Signature_num%C3%A9rique
   + https://www.docusign.com/how-it-works/electronic-signature/digital-signature/digital-signature-faq
 
-Présentation technique d'adobe Sign :
+Adobe Sign :
   + https://acrobat.adobe.com/content/dam/doc-cloud/fr/pdfs/adobe-sign-technical-overview-fr.pdf
-
-FAQ (Foires Aux Questions) sur Adobe sign
- + https://helpx.adobe.com/be_fr/sign/faq.html
+  + https://helpx.adobe.com/be_fr/sign/faq.html
+  
+Informations sur PAdES
+  + https://www.secureblackbox.com/kb/articles/10-BasicsOfPAdES.rst
