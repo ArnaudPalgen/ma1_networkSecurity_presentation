@@ -2,3 +2,8 @@ presentation/*.toc
 presentation/*.log
 presentation/*.aux
 presentation/*.out
+presentation/*.fdb_latexmk
+presentation/*.fls
+presentation/*.nav
+presentation/*.snm
+presentation/*.gz
