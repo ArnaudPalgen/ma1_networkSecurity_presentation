@@ -22,6 +22,7 @@ Sites montrant le principe de base la signature numérique :
   + https://stormimon.developpez.com/dotnet/signature-electronique/
   + https://fr.wikipedia.org/wiki/Signature_num%C3%A9rique
   + https://www.docusign.com/how-it-works/electronic-signature/digital-signature/digital-signature-faq
+  + https://www.4point.com/blog/2017/06/what_is_an_e-signatu.html
 
 Adobe Sign :
   + https://acrobat.adobe.com/content/dam/doc-cloud/fr/pdfs/adobe-sign-technical-overview-fr.pdf
