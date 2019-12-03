@@ -8,9 +8,11 @@
   + électronique et numérique
 + Signature numérique
   + Schéma de base vu au cours (PKI, CA, Hash function, asymetric encryption)
-+ Solutions existantes
++ Comparer les solutions existantes
   + Adobe Sign
   + gpg
+  + word ?
+  + latex ( packages hyperef et e-form)
   
 ## Liens utiles
 Un fichier .PDF de chez Adobe donnant quelques informations sur "Adobe Sign" : 
