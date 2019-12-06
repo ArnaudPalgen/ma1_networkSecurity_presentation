@@ -6,13 +6,13 @@
   + Qu'est-ce qu'une signature
   + 5 conditions
   + électronique et numérique
-+ Signature numérique
++ Signature numérique (Nikola)
   + Schéma de base vu au cours (PKI, CA, Hash function, asymetric encryption)
 + Comparer les solutions existantes
   + Adobe Sign
   + gpg
-  + word ?
-  + latex ( packages hyperef et e-form)
+  + word ? (Nikola)
+  + latex ( packages hyperef et e-form) (Nikola ???)
   
 ## Liens utiles
 Un fichier .PDF de chez Adobe donnant quelques informations sur "Adobe Sign" : 
