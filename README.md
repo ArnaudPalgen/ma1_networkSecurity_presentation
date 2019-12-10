@@ -30,3 +30,6 @@ Adobe Sign :
   
 Informations sur PAdES
   + https://www.secureblackbox.com/kb/articles/10-BasicsOfPAdES.rst
+
+Signature de document avec Acrobat Reader et sa carte d'identité
+  + https://eid.belgium.be/fr/faq/comment-signer-un-document-de-maniere-electronique-avec-acrobat-reader-dc#7258
