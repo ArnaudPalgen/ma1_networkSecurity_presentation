@@ -1,9 +1,10 @@
 \documentclass[compress]{beamer}
-
+\usepackage{MnSymbol,wasysym}
 \usepackage[utf8]{inputenc}
 \usepackage{amssymb}
-
+\usepackage{eurosym}
 \usetheme[navigation]{UMONS}
+\setbeamertemplate{navigation symbols}{}
 %\usetheme[navigation, no-subsection, no-totalframenumber]{UMONS}
 
 \newcommand{\IR}{\mathbb{R}}
@@ -13,13 +14,15 @@
 \subtitle{Digital signature}
 \author{Dieudonné KASONGO KABASELE, Nikola JOVICIC, Arnaud PALGEN, Yacine SAHLI}
 \institute[University of Mons]{%
-  Electromagnetism and telecommunications departement\\
-  Université de Mons
+  Electromagnetism and telecommunications department\\
+  University of Mons
   \\[2ex]
+  %\includegraphics[scale=0.5]{image}
   \includegraphics[height=4ex]{UMONS}\hspace{2em}%
-  \raisebox{-1ex}{\includegraphics[height=6ex]{UMONS_FS}}
+  \includegraphics[height=4ex]{UMONS_FPMS}\hspace{2em}
+  \raisebox{-1ex}{\includegraphics[height=6ex]{UMONS_FS}}\hspace{2em}
+  
 }
-
 \begin{document}
 
 \begin{frame}[plain]
@@ -30,49 +33,282 @@
   \tableofcontents
 \end{frame}
 
-\section{Première section}
-\subsection{Première sous-section}
-\begin{frame}
-  \frametitle{Premier transparent}
+\section{Introduction}
+    \subsection{Our approach to the problem ...}
+    \subsection{What is a Signature ?}
+    \subsection{Digital Signature Function}
+    \subsection{Difference between electronic and digital signature}
 
-  \begin{itemize}
-  \item Niveau 1 d'\texttt{itemize}
+\begin{frame}{Our approach to the problem ...}
+    \begin{enumerate}
+        \item Understand what is fundamentally a signature and what it implies (conditions to respect)
+        \item Common points between electronic and digital signature
+        \item Explain the basic mechanisms behind digital signature
+        \item Find existing solutions and compare them to the basic principle
+        \item Compare solutions between them (pros and cons)
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{What is a Signature ?}
+There are two kinds :
     \begin{itemize}
-    \item Niveau 2 d'\texttt{itemize}
-    \item Niveau 2 d'\texttt{itemize}
+    \item Electronic signature or e-signature\\
+refers to data in electronic form, 	which is logically associated with other data in electronic form and which 	is used by the signatory to sign or confirm their approval of a document 	or transaction. 
+ \item Digital signature\\
+ These are a subset of electronic signatures because they are also in 	electronic form. They are a cryptographic mechanism often used to implement electronic signatures. Digital signatures go much 	further in terms of providing security and trust services.
     \end{itemize}
-  \item Niveau 1 d'\texttt{itemize}
+    \tiny{Source:\url{https://www.4point.com/blog/2017/06/what_is_an_e-signatu.html}}
+\end{frame}
+
+\begin{frame}{Digital Signature Function}
+    \begin{itemize}
+    \item Properties\\
+
+  -Identification\\ 
+  -Integrity\\ 
+  
+  \item Conditions\\
+
+  -Authentic: the identity of the signatory must be traceable with certainty;
+
+  -Forgery-proof: the signature cannot be forged. Someone cannot pretend to be someone else;
+
+  -Not reusable: It is part of the signed document and cannot be moved to another document;
+
+  -Unalterable: Once it is signed, it cannot be modified;
+
+  -Irrevocable: the person who signed cannot deny it.
+ 
+    \end{itemize}
+\tiny{Source: \url{https://fr.wikipedia.org/wiki/Signature_num\%C3\%A9rique}}  
+\end{frame}
+
+\begin{frame}{Difference between electronic and digital signature}
+   % \item Difference between electronic and digital signature
+   \begin{center}
+        \includegraphics[scale=0.5]{Signature}
+   \end{center}
+\tiny{Source: \url{https://acrobat.adobe.com/content/dam/doc-cloud/fr/pdfs/adobe-sign-electronic-and-digital-signatures-wp-fr.pdf}}
+\end{frame}
+
+    \subsection{}
+
+\section{Basic principles of digital signatures}
+\subsection{Diagram of the basic principle}
+\begin{frame}
+  \frametitle{Diagram of the basic principle}
+    \begin{center}
+    \includegraphics[scale=0.32]{digital_signature_principle_english}
+    \end{center}
+\tiny{Source: \url{https://fr.wikipedia.org/wiki/Signature_num\%C3\%A9rique}}
+\end{frame}
+
+\subsection{The hash function}
+\begin{frame}
+  \frametitle{The hash function}
+  \begin{itemize}
+  \item A hash function H takes a long string M as an input and outputs a different and shorter string \textit{h}, called the hash
+    \begin{itemize}
+    \item \textit{h} = H(M)
+    \item Example with SHA1 : "\textit{Hello friend ! It is a beautiful day today, isn't it ?}" outputs "\textit{73341cf4db5967d8ac42d5061d4f4b4c6ab666e1}"
+    \item The hash is usually expressed in an hexadecimal form
+    \end{itemize}
+  \item Examples of a hash functions:
+    \begin{itemize}
+    \item MD5, SHA1, SHA256, SHA384, ...
+    \item $\textit{h} = H_{\oplus}(M) = M_1 \oplus M_2 \oplus M_3\oplus ... \oplus M_N$
+    \end{itemize}  
+  \item \textbf{Key features:}
+        \begin{itemize}
+    \item  computing \textit{h} = H(M) is easy but finding M from the hash should be very hard (in a reasonable time) !
+    \item  a single change in the original in the original string shall output a completely different hash (e.g. : "Hello friend\textbf{\underline{s}} ! ..." outputs "\textit{aff42bd158ec3c095ca49f6d11c6f9961eb1de74}")
+    \end{itemize} 
+   
   \end{itemize}
 \end{frame}
 
-\subsection{Deuxième sous-section}
+\subsection{Public certificates}
 \begin{frame}
-  \frametitle{Second transparent}
-
-  \begin{theorem}
-    Soit $f : \IR \to \IR$ une fonction continue et coercive.  Alors
-    $f$ possède un minimum.
-  \end{theorem}
+  \frametitle{Public certificates}
+  \begin{itemize}
+  \item Delivered by a \textbf{Certificate Authority}: trusted entity that issues and revokes public-key certificates and certifies the ownership of a public key by the "subject" of the certificate
+  \item X.509 standard specified the format of these certificates:
+  \begin{itemize}
+      \item Version: version of the certificate
+      \item Serial number: unique number linked to the certificate
+      \item Algorithm: hash function and public-key encryption algorithm
+      \item Issuer: the entity that issued the certificate
+      \item Validity period
+      \item Subject: owner of the certificate
+      \item Public key
+      \item Properties: Encrypted hash value of the certificate with the owner's private key
+      \item Extension: additional information (used from version 3 and onward)
+  \end{itemize}
+  \item Comodo, Sectigo, Symantec, Geotrust, RapidSSL, ...
+  \end{itemize}
 \end{frame}
 
 
-\section{Deuxième section}
-\begin{frame}
-  \frametitle{Second transparent}
 
-  \begin{enumerate}
-  \item Niveau 1 d'\texttt{enumerate}
-    \begin{enumerate}
-    \item Niveau 2 d'\texttt{enumerate}
-    \item Niveau 2 d'\texttt{enumerate}
-    \end{enumerate}
-  \item Niveau 1 d'\texttt{enumerate}
-  \end{enumerate}
+
+\section{Existing solutions}
+\subsection{Adobe Sign}
+\begin{frame}{What's Adobe Sign ?}
+        Adobe Sign is the Adobe's proprietary solution for signing documents.\\
+        Adobe Sign is compatible with
+        \begin{itemize}
+            \item Adobe PDF
+            \item Microsoft Word, Excel, PowerPoint
+            \item Text, Rich Text
+            \item Images
+            \item Web
+        \end{itemize}
+        Adobe Sign supports different types of authentication: Adobe Sign ID and Adobe ID, Google ID, Single Sign-On (SSO).
+        
+        The prices are:
+        \begin{itemize}
+            \item 145,05\euro/year for a person
+            \item minimum 508,05\euro/year for a small company
+        \end{itemize}
+        
+\end{frame}
+    
+    \begin{frame}{Security of Adobe Sign}
+        \begin{enumerate}
+            \item Adobe is certified ISO 27001, SOC2, PCI DSS.
+            \item Adobe Sign uses a PKI to certify documents with numeric signature before distributing them to participants.
+            \item Adobe use private virtual cloud of Amazon Web Services and Microsoft Azure.
+            \item Adobe use encryption algorithms that comply with the PCI DSS standard. They encrypt the datas with AES 256 bits.
+            \item They use HTTPS TLS V1.2 to transmit datas.
+        \end{enumerate}
+        
+    \end{frame}
+    \subsection{GnuPg}
+        \begin{frame}{GnuPG}
+        features:\\
+        \begin{itemize}
+            \item Hybrid ciphers
+            \item encryption
+            \item signature
+            \item key management
+        \end{itemize}
 \end{frame}
 
+        \begin{frame}{GnuPG encryption}
+    \begin{block}{Key generation an listing}
+        gpg -\--gen-key\\
+        gpg -\--list-keys
+    \end{block}
+    \pause
+    \begin{block}{Export /Import public key}
+        gpg -\--export -\--armor Bob \textgreater publickey.asc\\
+        gpg -\--import publickey.asc
+    \end{block}
+    \pause
+    \begin{block}{Encrypt using public key}
+        gpg -\--encrypt -\--recipient receiversname filename.txt\\
+        gpg -\--encrypt -r raman -r steve -r gopi  a.txt
+    \end{block}
+    \pause
+    \begin{block}{Decrypt using private key}
+        gpg filename.txt.gpg
+    \end{block}
+\end{frame}
+
+\begin{frame}{GnuPG signature}
+    \begin{block}{Sign and verify signature}
+        gpg -\--sign file.txt\\
+        gpg -\--verify file.txt.gpg
+    \end{block}
+    \pause
+    \begin{block}{Extract document}
+        gpg -\--output doc.txt -\--decrypt file.txt.gpg
+    \end{block}
+    \pause
+    \begin{block}{Clear sign}
+        gpg -\--output file.sig -\--clearsign file.txt
+    \end{block}
+    \pause
+    \begin{block}{Sign and encrypt }
+        gpg -\--sign -\--encrypt --recipient recipient file.txt
+    \end{block}
+\end{frame}
+    
+\subsection{Microsoft Office: Word}
+\begin{frame}
+  \frametitle{Microsoft Office: Word}
+  \begin{itemize}
+    \item Provides trustworthy digital signature of documents, using digital certificates from entrusted CAs, such as GlobalSign or IdenTrust
+    \item Easy to setup in the document (Insert $\rightarrow$ Signature Line)
+    \item Requires to pay for certificates (10-30 euros per month - several hundreds of euros per year !!)
+    \item Practical example: \url{https://piv.idmanagement.gov/userguides/signworddoc/}
+    \item GlobalSign yearly subscriptions: \url{https://www.globalsign.com/en/microsoft-office-document-signing/}
+    \item Mostly oriented for companies who can afford the fees of the digital certificates
+  \end{itemize}
+\end{frame}
+    
+    \subsection{Online solutions}
+        \begin{frame}{Online solutions}
+        There are many free or paid online solutions for signing documents.\\
+        They are easy to use but we have no information on the security of these signatures. We can see an example \href{https://smallpdf.com/fr/signer-un-pdf}{\beamergotobutton{here}}
+        \end{frame}
+
+    \subsection{LaTeX}
+        \begin{frame}{LaTex}
+        The package \textit{eforms} provide commands to add signature into a pdf.
+        We can use the command\\
+        \textit{\\sigField[1]\{2\}\{3\}\{4\}} to add a signature.\\
+            Parameter Description:
+            \begin{enumerate}
+                \item optional, used to enter any modification of appearance/actions
+                \item the title of the signature field
+                \item the width of the bounding rectangle
+                \item the height of the bounding rectangle
+            \end{enumerate}
+            
+            The package uses Acrobat to sign the document.
+
+        \end{frame}
+    
+
+\section{Conclusions}
+
+\begin{frame}{Conclusion}
+    \begin{itemize}
+        \item Adobe Sign
+            \begin{itemize}
+                \item reliable, safe and easy to use \smiley{}
+                \item expensive (not available in the free version) \frownie{}
+            \end{itemize}
+        \item GnuPg
+            \begin{itemize}
+                \item free, secure and available for Windows Linux and MacOS \smiley{}
+                \item can become complex \frownie{}
+            \end{itemize}
+        \item Microsoft Word
+            \begin{itemize}
+                \item simple to set up and reliable \smiley{}
+                \item certificates are expensive \frownie{}
+            \end{itemize}
+        \item Online solutions
+            \begin{itemize}
+                \item free and easy to use \smiley{}
+                \item not secure  \frownie{}
+            \end{itemize}
+        \item LaTeX
+            \begin{itemize}
+                \item free and relatively easy to set for the signer \smiley{}
+                \item not as secure as the previous ones \frownie{}
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \begin{center}
+        \vfill
+        {\huge Thank you for your attention !}
+        \vfill
+    \end{center}
+\end{frame}
 
 \end{document}
-%%% Local Variables: 
-%%% mode: latex
-%%% TeX-master: t
-%%% End: 
