@@ -1,6 +1,6 @@
 # Présentation network security and management
 
-## Enoncé: 
+## Enoncé
 Réaliser une présentation sur la signatures de documents électroniques. Présenter différentes solutions et les comparer.
 
 ## Table des matière
