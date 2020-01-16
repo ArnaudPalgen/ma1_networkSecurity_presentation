@@ -2,17 +2,22 @@
 # Signatures de documents
 
 ## Table des matière
-+ Signature
++ Introduction
+  + Notre approche du problème
   + Qu'est-ce qu'une signature
-  + 5 conditions
-  + électronique et numérique
-+ Signature numérique (Nikola)
-  + Schéma de base vu au cours (PKI, CA, Hash function, asymetric encryption)
+  + Fonctions d'une signatures digitale
+  + Différence entre signature électronique et digitale
++ Signature numérique
+  + Diagrammes des principes de base
+  + Fonctions de hashage
+  + Certificats
 + Comparer les solutions existantes
   + Adobe Sign
-  + gpg
-  + word ? (Nikola)
-  + latex ( packages hyperef et e-form) (Nikola ???)
+  + GnuPg
+  + Word
+  + Solutions en ligne
+  + LaTeX ( packages hyperef et e-form)
++ Conclusion
   
 ## Liens utiles
 Un fichier .PDF de chez Adobe donnant quelques informations sur "Adobe Sign" : 
